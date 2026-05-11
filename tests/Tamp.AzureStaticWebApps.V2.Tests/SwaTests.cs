@@ -193,7 +193,7 @@ public sealed class SwaTests
     [Fact]
     public void Null_Configurer_Throws_For_Deploy()
     {
-        Assert.Throws<ArgumentNullException>(() => Swa.Deploy(FakeTool(), null!));
+        Assert.Throws<ArgumentNullException>(() => Swa.Deploy(FakeTool(), (Action<SwaDeploySettings>)null!));
     }
 
     [Fact]

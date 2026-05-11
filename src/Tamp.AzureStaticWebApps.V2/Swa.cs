@@ -41,4 +41,30 @@ public static class Swa
         s.AddArgs(arguments);
         return s.ToCommandPlan(tool);
     }
+
+    // ---- Object-init overloads (TAM-161 satellite fanout) ----
+    // Tool-bound parallel to the configurer-only shapes above; both produce
+    // identical CommandPlans. Fluent stays canonical in docs and `tamp init`
+    // templates; object-init available for consumers who prefer the C#
+    // initializer shape.
+    //
+    //     Swa.Deploy(swa, new() { AppName = "swa-strata", Env = "production" });
+    //
+    // is equivalent to:
+    //
+    //     Swa.Deploy(swa, s => s.SetAppName("swa-strata").SetEnv("production"));
+
+    public static CommandPlan Deploy(Tool tool, SwaDeploySettings settings)
+    {
+        if (tool is null) throw new ArgumentNullException(nameof(tool));
+        if (settings is null) throw new ArgumentNullException(nameof(settings));
+        return settings.ToCommandPlan(tool);
+    }
+
+    public static CommandPlan Build(Tool tool, SwaBuildSettings settings)
+    {
+        if (tool is null) throw new ArgumentNullException(nameof(tool));
+        if (settings is null) throw new ArgumentNullException(nameof(settings));
+        return settings.ToCommandPlan(tool);
+    }
 }
