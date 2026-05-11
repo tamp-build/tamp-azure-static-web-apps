@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <RootNamespace>Tamp.AzureStaticWebApps.V2</RootNamespace>
+    <AssemblyName>Tamp.AzureStaticWebApps.V2</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package">
+    <PackageId>Tamp.AzureStaticWebApps.V2</PackageId>
+    <Description>Tamp wrapper for the @azure/static-web-apps-cli (swa) 2.x. Deploy verb, build verb, plus a Raw escape hatch. Deployment token typed as Secret and routed through SWA_CLI_DEPLOYMENT_TOKEN env var (never argv). For hardened agents without global-install permission, use the npx invocation pattern documented in README.</Description>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(TampCorePath)" Condition="'$(TampCoreMode)' == 'project'" />
+    <PackageReference Include="Tamp.Core" Condition="'$(TampCoreMode)' == 'package'" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
