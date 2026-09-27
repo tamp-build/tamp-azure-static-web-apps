@@ -11,7 +11,7 @@ namespace Tamp.AzureStaticWebApps.V2;
 /// the runner's redaction table.</para>
 ///
 /// <para>CWD discipline: swa-cli refuses to run from inside the
-/// artifact (output-location) directory. Use <see cref="SetWorkingDirectory"/>
+/// artifact (output-location) directory. Use <c>SetWorkingDirectory</c>
 /// to set the parent dir, or invoke from the project root.</para>
 /// </summary>
 public sealed class SwaDeploySettings : SwaSettingsBase
